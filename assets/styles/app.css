@@ -1,3 +1,7 @@
-body {
-    background-color: skyblue;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    font-family: 'Montserrat','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
