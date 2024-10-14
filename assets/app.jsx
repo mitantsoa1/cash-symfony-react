@@ -20,7 +20,7 @@ const App = () => {
 
   return (
     <div className="flex w-full">
-      <Sidebar isShow={true} isConnected={isConnected} />
+      <Sidebar isShow={true} isConnected={isConnected} isAdmin={false} />
       <Main />
     </div>
   );

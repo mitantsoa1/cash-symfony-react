@@ -5,7 +5,7 @@ import Compte from "./compte/Compte";
 import Adresse from "./adresse/Adresse";
 import Commission from "./Commission";
 import Frais from "./Frais";
-import Transaction from "./Transaction";
+import Transaction from "./transaction/Transaction";
 import Etat from "./Etat";
 import Login from "./auth/Login";
 import Register from "./auth/Register";

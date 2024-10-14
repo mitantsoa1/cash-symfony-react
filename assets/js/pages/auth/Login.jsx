@@ -9,11 +9,12 @@ const Login = () => {
   const [authCode, setAuthCode] = useState(""); // Pour le code 2FA
   const [requires2FA, setRequires2FA] = useState(false);
   const [error, setError] = useState(null);
+  const [isDisable, setIsDisable] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    setIsDisable(true);
     try {
       // Premier appel pour l'authentification
       const response = await axios.post("/api/login_check", {
@@ -32,7 +33,7 @@ const Login = () => {
         }
         console.log("fa", fa.data, fa.status);
       }
-
+      setIsDisable(false);
       // } else {
       //   localStorage.setItem("token", response.data.token);
       //   navigate("/frais");
@@ -40,6 +41,7 @@ const Login = () => {
       // }
     } catch (error) {
       console.log("error");
+      setIsDisable(false);
 
       setError("Invalid credentials");
     }
@@ -47,24 +49,24 @@ const Login = () => {
 
   const handle2FASubmit = async (event) => {
     event.preventDefault();
-
+    setIsDisable(true);
     try {
       // Vérifier le code 2FA
       const response = await axios.post("/api/two_factor_check", {
         email,
         auth_code: authCode,
       });
-      console.log(response);
-
       if (response.data == true) {
         localStorage.setItem("token", response.data.token);
         navigate("/frais");
         window.location.reload();
       } else {
-        setError("Invalid 2FA code");
+        setError("Invalid OTP");
       }
+      setIsDisable(false);
     } catch (error) {
-      setError("Invalid 2FA code");
+      setError("Invalid OTP");
+      setIsDisable(false);
     }
   };
 
@@ -105,11 +107,11 @@ const Login = () => {
           {requires2FA && (
             <Input
               parentClassName="mb-2"
-              label="2FA Code:"
+              label="OTP:"
               labelClassName="mb-2.5 block font-medium text-gray-400 dark:text-white"
               divInputClassName="relative"
               type="text"
-              placeholder="Enter your 2FA code"
+              placeholder="Enter your OTP"
               name="authCode"
               value={authCode}
               onChange={(e) => setAuthCode(e.target.value)}
@@ -122,7 +124,8 @@ const Login = () => {
           <Input
             divInputClassName="mb-5"
             type="submit"
-            value={requires2FA ? "Submit 2FA Code" : "Login"}
+            disabled={isDisable}
+            value={requires2FA ? "Submit" : "Login"}
             className="w-full py-2 font-medium text-white transition border rounded-md cursor-pointer bg-primary hover:bg-opacity-90"
           />
         </form>

@@ -25,7 +25,7 @@ class LoginController extends BaseController
             $user->setAuthCode($authCode);
             $this->save($user);
 
-            $mailService->send("admin.cash@admin.com", $user->getEmail(), "authCode pour cash", $authCode, []);
+            $mailService->send("admin.cash@admin.com", $user->getEmail(), "OTP cash", " Votre code est: <br>$authCode</br>", []);
 
             return $this->json(true);
         }
