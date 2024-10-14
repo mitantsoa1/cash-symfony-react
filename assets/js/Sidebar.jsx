@@ -3,7 +3,7 @@ import SidebarItem from "./components/SidebarItem";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-function Sidebar({ isShow, isConnected }) {
+function Sidebar({ isShow, isConnected, isAdmin = false }) {
   const handleLogout = async () => {
     Swal.fire({
       title: "Do you want to log out?",
@@ -199,6 +199,25 @@ function Sidebar({ isShow, isConnected }) {
                 ></path>
               </svg>{" "}
               Login
+            </SidebarItem>
+            <SidebarItem to="/register" isConnected={true} isAdmin>
+              <svg
+                className="w-5 h-5 mr-3 svg-inline--fa fa-chart-bar fa-w-16"
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fas"
+                data-icon="chart-bar"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+                data-fa-i2svg=""
+              >
+                <path
+                  fill="currentColor"
+                  d="M332.8 320h38.4c6.4 0 12.8-6.4 12.8-12.8V172.8c0-6.4-6.4-12.8-12.8-12.8h-38.4c-6.4 0-12.8 6.4-12.8 12.8v134.4c0 6.4 6.4 12.8 12.8 12.8zm96 0h38.4c6.4 0 12.8-6.4 12.8-12.8V76.8c0-6.4-6.4-12.8-12.8-12.8h-38.4c-6.4 0-12.8 6.4-12.8 12.8v230.4c0 6.4 6.4 12.8 12.8 12.8zm-288 0h38.4c6.4 0 12.8-6.4 12.8-12.8v-70.4c0-6.4-6.4-12.8-12.8-12.8h-38.4c-6.4 0-12.8 6.4-12.8 12.8v70.4c0 6.4 6.4 12.8 12.8 12.8zm96 0h38.4c6.4 0 12.8-6.4 12.8-12.8V108.8c0-6.4-6.4-12.8-12.8-12.8h-38.4c-6.4 0-12.8 6.4-12.8 12.8v198.4c0 6.4 6.4 12.8 12.8 12.8zM496 384H64V80c0-8.84-7.16-16-16-16H16C7.16 64 0 71.16 0 80v336c0 17.67 14.33 32 32 32h464c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16z"
+                ></path>
+              </svg>{" "}
+              Register
             </SidebarItem>
           </>
         )}

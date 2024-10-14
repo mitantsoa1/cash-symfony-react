@@ -1,0 +1,5 @@
+import { ActionCollectionConfig, createStateConfig, StateHook, StateSetter, ActionCollectionResult, StateGetter } from './GlobalStore.types';
+import React from 'react';
+export declare const createStatefulContext: <TState, TMetadata = null, TActions extends ActionCollectionConfig<TState, TMetadata> = null>(initialValue: TState, parameters?: createStateConfig<TState, TMetadata, TActions>) => readonly [() => [hook: StateHook<TState, keyof TActions extends never ? StateSetter<TState> : ActionCollectionResult<TState, TMetadata, TActions>, TMetadata>, stateRetriever: StateGetter<TState>, stateMutator: keyof TActions extends never ? StateSetter<TState> : ActionCollectionResult<TState, TMetadata, TActions>], React.FC<React.PropsWithChildren<{
+    initialValue?: Partial<TState>;
+}>>];
