@@ -16,8 +16,8 @@ class Commission
     #[ORM\Column(length: 50)]
     private ?string $operateur = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $type = null;
+    // #[ORM\Column(length: 50)]
+    // private ?string $type = null;
 
     #[ORM\Column]
     private ?float $min = null;
@@ -25,8 +25,11 @@ class Commission
     #[ORM\Column]
     private ?float $max = null;
 
+    #[ORM\Column(name: "retrait")]
+    public ?float $retrait = null;
+
     #[ORM\Column]
-    private ?float $montant = null;
+    public ?float $depot = null;
 
     public function getId(): ?int
     {
@@ -45,17 +48,17 @@ class Commission
         return $this;
     }
 
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
+    // public function getType(): ?string
+    // {
+    //     return $this->type;
+    // }
 
-    public function setType(string $type): static
-    {
-        $this->type = $type;
+    // public function setType(string $type): static
+    // {
+    //     $this->type = $type;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getMin(): ?float
     {
@@ -81,14 +84,26 @@ class Commission
         return $this;
     }
 
-    public function getMontant(): ?float
+    public function getRetrait(): ?float
     {
-        return $this->montant;
+        return $this->retrait;
     }
 
-    public function setMontant(float $montant): static
+    public function setRetrait(float $retrait): static
     {
-        $this->montant = $montant;
+        $this->retrait = $retrait;
+
+        return $this;
+    }
+
+    public function getDepot(): ?float
+    {
+        return $this->depot;
+    }
+
+    public function setDepot(float $depot): static
+    {
+        $this->depot = $depot;
 
         return $this;
     }

@@ -14,18 +14,20 @@ const Commission = () => {
   const headers = [
     "ID",
     "Opérateur",
-    "Type",
+    // "Type",
     "Montant Min.",
     "Montant max",
-    "Montant",
+    "Retrait",
+    "Depot",
   ];
 
   const [formData, setFormData] = useState({
     operateur: "airtel",
-    type: "retrait",
+    // type: "retrait",
     min: "",
     max: "",
-    montant: "",
+    retrait: "",
+    depot: "",
   });
 
   const handleChange = (e) => {
@@ -45,10 +47,11 @@ const Commission = () => {
         mutate(); // This re-fetches the data from the API and updates the component
         setFormData({
           operateur: "airtel",
-          type: "retrait",
+          // type: "retrait",
           min: "",
           max: "",
-          montant: "",
+          retrait: "",
+          depot: "",
         });
       })
       .catch((error) => {

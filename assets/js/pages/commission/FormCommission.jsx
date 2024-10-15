@@ -81,16 +81,33 @@ const FormCommission = ({ formData, handleChange, handleSubmit }) => {
 
       <div className="mb-4">
         <label className="mb-2.5 block font-medium text-gray-400 dark:text-white">
-          Montant
+          Commission retrait
         </label>
         <div className="relative">
           <input
             required
             type="text"
             placeholder=""
-            name="montant"
-            id="montant"
-            value={formData.montant}
+            name="retrait"
+            id="retrait"
+            value={formData.retrait}
+            onChange={handleChange}
+            className="w-full py-2 pl-2 pr-10 bg-white border rounded-md outline-none border-stroke focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+          />
+        </div>
+      </div>
+      <div className="mb-4">
+        <label className="mb-2.5 block font-medium text-gray-400 dark:text-white">
+          Commission depot
+        </label>
+        <div className="relative">
+          <input
+            required
+            type="text"
+            placeholder=""
+            name="depot"
+            id="depot"
+            value={formData.depot}
             onChange={handleChange}
             className="w-full py-2 pl-2 pr-10 bg-white border rounded-md outline-none border-stroke focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
           />

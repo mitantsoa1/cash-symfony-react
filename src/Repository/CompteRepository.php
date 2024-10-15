@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\Compte;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -11,7 +13,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class CompteRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, private EntityManagerInterface $entityManager)
     {
         parent::__construct($registry, Compte::class);
     }
@@ -40,4 +42,15 @@ class CompteRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function CalculSomme($operateur)
+    {
+        $qb = $this->entityManager->createQueryBuilder();
+        $qb->select('SUM(c.solde)')
+            ->from('App\Entity\Compte', 'c')
+            ->where('c.operateur = :val1')
+            ->setParameter('val1', $operateur)
+        ;
+        return $qb->getQuery()->getSingleScalarResult();
+    }
 }

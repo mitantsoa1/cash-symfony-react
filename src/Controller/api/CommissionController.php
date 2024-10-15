@@ -33,15 +33,16 @@ class CommissionController extends BaseController
 
         $content = json_decode($request->getContent());
         $commission->setOperateur($content->operateur);
-        $commission->setType($content->type);
+        // $commission->setType($content->type);
         $commission->setMin($content->min);
         $commission->setMax($content->max);
-        $commission->setMontant($content->montant);
+        $commission->setRetrait($content->retrait);
+        $commission->setDepot($content->depot);
 
         $this->save($commission);
 
-        return $this->json(['status' => "success", 'message' => 'Compte crée']);
+        return $this->json(['status' => "success", 'message' => 'Commission crée']);
 
-        return $this->json(['status' => "error", 'message' => 'Erreur']);
+        // return $this->json(['status' => "error", 'message' => 'Erreur']);
     }
 }

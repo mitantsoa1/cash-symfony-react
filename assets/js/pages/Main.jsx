@@ -5,11 +5,12 @@ import Compte from "./compte/Compte";
 import Adresse from "./adresse/Adresse";
 import Commission from "./commission/Commission";
 // import Frais from "./frais/Frais";
-// import Transaction from "./transaction/Transaction";
-import Etat from "./etat/Etat";
+import Transaction from "./transaction/Transaction";
+// import Etat from "./etat/Etat";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Index from "./index/Index";
+import Gain from "./gain/gain";
 
 const Main = () => {
   return (
@@ -19,8 +20,9 @@ const Main = () => {
         <Route path="/adresse" element={<Adresse />} />
         <Route path="/commission" element={<Commission />} />
         {/* <Route path="/frais" element={<Frais />} /> */}
-        {/* <Route path="/transaction" element={<Transaction />} /> */}
-        <Route path="/etat" element={<Etat />} />
+        <Route path="/transaction" element={<Transaction />} />
+        {/* <Route path="/etat" element={<Etat />} /> */}
+        <Route path="/gain" element={<Gain />} />
         <Route path="/" element={<Index />} />
 
         <Route path="/register" element={<Register />} />

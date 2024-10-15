@@ -46,6 +46,7 @@ const Transaction = () => {
       .post("/api/transaction/create", formData)
       .then((response) => {
         // Re-fetch the data after successful submission
+
         setFormData({
           operateur: "airtel",
           montant: "",
@@ -53,6 +54,7 @@ const Transaction = () => {
           tel: "",
           reference: "",
         });
+        mutate();
       })
       .catch((error) => {
         console.error("Erreur lors de la soumission:", error);
