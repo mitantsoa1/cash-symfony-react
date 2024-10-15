@@ -1,10 +1,10 @@
 import React from "react";
 
-const FormTransaction = ({ formData, handleChange, handleSubmit }) => {
+const FormCommission = ({ formData, handleChange, handleSubmit }) => {
   return (
     <form
       className="md:w-1/3 lg:w-1/3 sm:w-full "
-      action="/api/transaction/create"
+      action="/api/commission/create"
       method="POST"
       onSubmit={handleSubmit}
     >
@@ -46,6 +46,41 @@ const FormTransaction = ({ formData, handleChange, handleSubmit }) => {
       </div>
       <div className="mb-4">
         <label className="mb-2.5 block font-medium text-gray-400 dark:text-white">
+          Min.
+        </label>
+        <div className="relative">
+          <input
+            required
+            type="text"
+            placeholder=""
+            name="min"
+            id="min"
+            value={formData.min}
+            onChange={handleChange}
+            className="w-full py-2 pl-2 pr-10 bg-white border rounded-md outline-none border-stroke focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+          />
+        </div>
+      </div>
+      <div className="mb-4">
+        <label className="mb-2.5 block font-medium text-gray-400 dark:text-white">
+          Max.
+        </label>
+        <div className="relative">
+          <input
+            required
+            type="text"
+            placeholder=""
+            name="max"
+            id="max"
+            value={formData.max}
+            onChange={handleChange}
+            className="w-full py-2 pl-2 pr-10 bg-white border rounded-md outline-none border-stroke focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+          />
+        </div>
+      </div>
+
+      <div className="mb-4">
+        <label className="mb-2.5 block font-medium text-gray-400 dark:text-white">
           Montant
         </label>
         <div className="relative">
@@ -56,41 +91,6 @@ const FormTransaction = ({ formData, handleChange, handleSubmit }) => {
             name="montant"
             id="montant"
             value={formData.montant}
-            onChange={handleChange}
-            className="w-full py-2 pl-2 pr-10 bg-white border rounded-md outline-none border-stroke focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-          />
-        </div>
-      </div>
-
-      <div className="mb-4">
-        <label className="mb-2.5 block font-medium text-gray-400 dark:text-white">
-          N° Tel
-        </label>
-        <div className="relative">
-          <input
-            required
-            type="text"
-            placeholder=""
-            name="tel"
-            id="tel"
-            value={formData.tel}
-            onChange={handleChange}
-            className="w-full py-2 pl-2 pr-10 bg-white border rounded-md outline-none border-stroke focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-          />
-        </div>
-      </div>
-      <div className="mb-4">
-        <label className="mb-2.5 block font-medium text-gray-400 dark:text-white">
-          Reference
-        </label>
-        <div className="relative">
-          <input
-            required
-            type="text"
-            placeholder=""
-            name="reference"
-            id="reference"
-            value={formData.reference}
             onChange={handleChange}
             className="w-full py-2 pl-2 pr-10 bg-white border rounded-md outline-none border-stroke focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
           />
@@ -107,4 +107,4 @@ const FormTransaction = ({ formData, handleChange, handleSubmit }) => {
   );
 };
 
-export default FormTransaction;
+export default FormCommission;

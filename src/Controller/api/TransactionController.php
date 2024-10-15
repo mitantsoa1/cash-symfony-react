@@ -3,6 +3,7 @@
 namespace App\Controller\api;
 
 use App\Controller\admin\BaseController;
+use App\Entity\Compte;
 use App\Entity\Transaction;
 use App\Repository\TransactionRepository;
 use DateTimeImmutable;
@@ -23,7 +24,7 @@ class TransactionController extends BaseController
 
     #[Route('/create', name: 'create', methods: ['POST'])]
     #[Route('/edit/{id}', name: 'edit', methods: ['POST'])]
-    public function create(Request $request, Transaction $transaction = null): Response
+    public function create(Request $request, Transaction $transaction = null, Compte $compte = null): Response
     {
 
         if (!$transaction) {
@@ -34,12 +35,23 @@ class TransactionController extends BaseController
         $content = json_decode($request->getContent());
         $transaction->setOperateur($content->operateur);
         $transaction->setType($content->type);
-        $transaction->setMontant($content->montant);
+        $montant = floatval($content->montant);
+        $transaction->setMontant($montant);
         $transaction->setTel($content->tel);
         $transaction->setReference($content->reference);
         $transaction->setCreatedAt(new \DateTimeImmutable());
 
         $this->save($transaction);
+        $compte = new Compte();
+
+        $compte->setOperateur($content->operateur);
+        $solde = $content->type == 'depot' ? floatval($content->montant * -1) : $montant;
+
+        // dd($content->type == 'depot' ? $content->montant : ($content->montant * -1));
+        $compte->setSolde($solde);
+        $compte->setObservation($content->type . " - ref: " . $content->reference . " - tel: " . $content->tel);
+
+        $this->save($compte);
 
         // return $this->json(['status' => "success", 'message' => 'Transaction cree']);
         return $this->json($transaction);

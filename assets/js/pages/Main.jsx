@@ -3,12 +3,13 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import Compte from "./compte/Compte";
 import Adresse from "./adresse/Adresse";
-import Commission from "./Commission";
-import Frais from "./Frais";
-import Transaction from "./transaction/Transaction";
-import Etat from "./Etat";
+import Commission from "./commission/Commission";
+// import Frais from "./frais/Frais";
+// import Transaction from "./transaction/Transaction";
+import Etat from "./etat/Etat";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
+import Index from "./index/Index";
 
 const Main = () => {
   return (
@@ -17,14 +18,15 @@ const Main = () => {
         <Route path="/compte" element={<Compte />} />
         <Route path="/adresse" element={<Adresse />} />
         <Route path="/commission" element={<Commission />} />
-        <Route path="/frais" element={<Frais />} />
-        <Route path="/transaction" element={<Transaction />} />
+        {/* <Route path="/frais" element={<Frais />} /> */}
+        {/* <Route path="/transaction" element={<Transaction />} /> */}
         <Route path="/etat" element={<Etat />} />
+        <Route path="/" element={<Index />} />
 
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<div></div>} />
-        <Route path="*" element={<Navigate to="/frais" />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>
   );

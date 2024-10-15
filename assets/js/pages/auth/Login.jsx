@@ -31,7 +31,6 @@ const Login = () => {
           setRequires2FA(true);
           setError("");
         }
-        console.log("fa", fa.data, fa.status);
       }
       setIsDisable(false);
       // } else {
@@ -58,7 +57,7 @@ const Login = () => {
       });
       if (response.data == true) {
         localStorage.setItem("token", response.data.token);
-        navigate("/frais");
+        navigate("/");
         window.location.reload();
       } else {
         setError("Invalid OTP");

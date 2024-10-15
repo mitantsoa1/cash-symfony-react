@@ -37,7 +37,7 @@ function Sidebar({ isShow, isConnected, isAdmin = false }) {
         CASH POINT
       </div>
       <ul className="">
-        <SidebarItem to="/frais" isConnected={true}>
+        {/* <SidebarItem to="/frais" isConnected={true}>
           <svg
             className="w-5 h-5 mr-3 svg-inline--fa fa-dollar-sign fa-w-9"
             aria-hidden="true"
@@ -55,6 +55,26 @@ function Sidebar({ isShow, isConnected, isAdmin = false }) {
             ></path>
           </svg>{" "}
           Frais
+        </SidebarItem> */}
+        <SidebarItem to="/commission" isConnected={isConnected}>
+          {" "}
+          <svg
+            className="w-5 h-5 mr-3 svg-inline--fa fa-calculator fa-w-14"
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fas"
+            data-icon="calculator"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+            data-fa-i2svg=""
+          >
+            <path
+              fill="currentColor"
+              d="M400 0H48C22.4 0 0 22.4 0 48v416c0 25.6 22.4 48 48 48h352c25.6 0 48-22.4 48-48V48c0-25.6-22.4-48-48-48zM128 435.2c0 6.4-6.4 12.8-12.8 12.8H76.8c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm0-128c0 6.4-6.4 12.8-12.8 12.8H76.8c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm128 128c0 6.4-6.4 12.8-12.8 12.8h-38.4c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm0-128c0 6.4-6.4 12.8-12.8 12.8h-38.4c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm128 128c0 6.4-6.4 12.8-12.8 12.8h-38.4c-6.4 0-12.8-6.4-12.8-12.8V268.8c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v166.4zm0-256c0 6.4-6.4 12.8-12.8 12.8H76.8c-6.4 0-12.8-6.4-12.8-12.8V76.8C64 70.4 70.4 64 76.8 64h294.4c6.4 0 12.8 6.4 12.8 12.8v102.4z"
+            ></path>
+          </svg>{" "}
+          Commission
         </SidebarItem>
         <SidebarItem to="/compte" isConnected={isConnected}>
           <svg
@@ -94,7 +114,7 @@ function Sidebar({ isShow, isConnected, isAdmin = false }) {
           </svg>{" "}
           Adresse
         </SidebarItem>
-        <SidebarItem to="/commission" isConnected={isConnected}>
+        {/* <SidebarItem to="/commission" isConnected={isConnected}>
           {" "}
           <svg
             className="w-5 h-5 mr-3 svg-inline--fa fa-calculator fa-w-14"
@@ -113,7 +133,7 @@ function Sidebar({ isShow, isConnected, isAdmin = false }) {
             ></path>
           </svg>{" "}
           Commission
-        </SidebarItem>
+        </SidebarItem> */}
 
         <SidebarItem to="/transaction" isConnected={isConnected}>
           <svg
@@ -200,7 +220,7 @@ function Sidebar({ isShow, isConnected, isAdmin = false }) {
               </svg>{" "}
               Login
             </SidebarItem>
-            <SidebarItem to="/register" isConnected={true} isAdmin>
+            {/* <SidebarItem to="/register" isConnected={true} isAdmin>
               <svg
                 className="w-5 h-5 mr-3 svg-inline--fa fa-chart-bar fa-w-16"
                 aria-hidden="true"
@@ -218,7 +238,7 @@ function Sidebar({ isShow, isConnected, isAdmin = false }) {
                 ></path>
               </svg>{" "}
               Register
-            </SidebarItem>
+            </SidebarItem> */}
           </>
         )}
       </ul>

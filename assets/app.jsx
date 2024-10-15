@@ -1,7 +1,6 @@
 import ReactDOM from "react-dom/client";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, useLocation } from "react-router-dom";
-import { createGlobalState } from "react-hooks-global-states";
 
 import "./bootstrap.js";
 import "./styles/app.css";
