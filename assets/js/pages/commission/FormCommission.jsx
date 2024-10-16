@@ -26,7 +26,7 @@ const FormCommission = ({ formData, handleChange, handleSubmit }) => {
           </select>
         </div>
       </div>
-      <div className="mb-4">
+      {/* <div className="mb-4">
         <label className="mb-2.5 block font-medium text-gray-400 dark:text-white">
           Type
         </label>
@@ -43,7 +43,7 @@ const FormCommission = ({ formData, handleChange, handleSubmit }) => {
             <option value="transfert">Transfert</option>
           </select>
         </div>
-      </div>
+      </div> */}
       <div className="mb-4">
         <label className="mb-2.5 block font-medium text-gray-400 dark:text-white">
           Min.

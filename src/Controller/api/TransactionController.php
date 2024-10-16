@@ -57,6 +57,7 @@ class TransactionController extends BaseController
 
         $compte->setSolde($solde);
         $compte->setObservation($content->type . " - ref: " . $content->reference . " - tel: " . $content->tel);
+        $compte->setIsTransaction(true);
 
         $this->save($compte);
 

@@ -11,6 +11,8 @@ const Commission = () => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, error, isLoading, mutate } = useSWR("/api/commission", fetcher);
 
+  const [isEditing, setIsEditing] = useState(false);
+
   const headers = [
     "ID",
     "Opérateur",
@@ -37,26 +39,55 @@ const Commission = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); // Empêche la soumission par défaut
 
-    axios
-      .post("/api/commission/create", formData)
-      .then((response) => {
-        // Re-fetch the data after successful submission
-        mutate(); // This re-fetches the data from the API and updates the component
-        setFormData({
-          operateur: "airtel",
-          // type: "retrait",
-          min: "",
-          max: "",
-          retrait: "",
-          depot: "",
-        });
-      })
-      .catch((error) => {
-        console.error("Erreur lors de la soumission:", error);
-      });
+    try {
+      if (isEditing) {
+        await axios.post(`/api/commission/edit/${formData.id}`, formData);
+      } else {
+        await axios.post("/api/commission/create", formData);
+      }
+      mutate();
+      resetForm();
+    } catch (error) {
+      console.error("Erreur lors de la soumission:", error);
+    }
+  };
+
+  const handleEdit = (row) => {
+    setFormData({
+      id: row.id,
+      operateur: row.operateur,
+      min: row.min,
+      max: row.max,
+      retrait: row.retrait,
+      depot: row.depot,
+    });
+    setIsEditing(true);
+  };
+
+  const handleDelete = async (row) => {
+    if (window.confirm("Êtes-vous sûr de vouloir supprimer cet élément ?")) {
+      try {
+        await axios.delete(`/api/commission/${row.id}`);
+        mutate();
+      } catch (error) {
+        console.error("Erreur lors de la suppression:", error);
+      }
+    }
+  };
+
+  const resetForm = () => {
+    setFormData({
+      id: 0,
+      operateur: "",
+      min: "",
+      max: "",
+      retrait: "",
+      depot: "",
+    });
+    setIsEditing(false);
   };
 
   if (error) console.log(error);
@@ -69,6 +100,7 @@ const Commission = () => {
           formData={formData}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
+          isEditing={isEditing}
         />
       </div>
 
@@ -80,6 +112,8 @@ const Commission = () => {
             headers={headers}
             data={data}
             tableClassName="min-w-full bg-gray-50 border border-gray-400"
+            onEdit={handleEdit}
+            onDelete={handleDelete}
           />
         </div>
       ) : (

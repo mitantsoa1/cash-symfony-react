@@ -23,6 +23,9 @@ class Compte
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $observation = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $isTransaction = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class Compte
     public function setObservation(?string $observation): static
     {
         $this->observation = $observation;
+
+        return $this;
+    }
+
+    public function getIsTransaction(): ?bool
+    {
+        return $this->isTransaction;
+    }
+
+    public function setIsTransaction(?bool $isTransaction): static
+    {
+        $this->isTransaction = $isTransaction;
 
         return $this;
     }

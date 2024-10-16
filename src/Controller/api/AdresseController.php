@@ -19,8 +19,8 @@ class AdresseController extends BaseController
         return $this->json($adresses);
     }
 
-    #[Route('/create', name: 'create', methods: ['POST'])]
     #[Route('/edit/{id}', name: 'edit', methods: ['POST'])]
+    #[Route('/create', name: 'create', methods: ['POST'])]
     public function create(Request $request, Adresse $adresse = null): Response
     {
 
@@ -36,8 +36,15 @@ class AdresseController extends BaseController
 
         $this->save($adresse);
 
+        // dd($content);
+        return $this->json($adresse);
         return $this->json(['status' => "success", 'message' => 'adresse crée']);
+    }
 
-        return $this->json(['status' => "error", 'message' => 'Erreur']);
+    #[Route('/remove/{id}', name: 'remove', methods: ['DELETE'])]
+    public function delete(Adresse $adresse)
+    {
+        $this->remove($adresse);
+        return $this->json(['status' => "success", 'message' => 'adresse supprimée']);
     }
 }

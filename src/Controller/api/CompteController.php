@@ -56,6 +56,7 @@ class CompteController extends BaseController
         $compte->setOperateur($content->operateur);
         $compte->setSolde($content->solde);
         $compte->setObservation($content->observation);
+        $compte->setIsTransaction(false);
 
         $this->save($compte);
 
