@@ -101,12 +101,14 @@ const Compte = () => {
         <Loading />
       ) : !error ? (
         <div className="flex-grow p-4 overflow-y-auto h-2/3">
+          {console.log(data)}
           <DataTable
             headers={headers}
             data={data || []}
             tableClassName="min-w-full bg-gray-50 border border-gray-300"
             onEdit={handleEdit}
             onDelete={handleDelete}
+            isEditable={true}
           />
         </div>
       ) : (

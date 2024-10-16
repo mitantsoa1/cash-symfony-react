@@ -82,6 +82,7 @@ const Transaction = () => {
             headers={headers}
             data={data}
             tableClassName="min-w-full bg-gray-50 border border-gray-400"
+            isEditable={false}
           />
         </div>
       ) : (

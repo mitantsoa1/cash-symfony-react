@@ -114,6 +114,7 @@ const Commission = () => {
             tableClassName="min-w-full bg-gray-50 border border-gray-400"
             onEdit={handleEdit}
             onDelete={handleDelete}
+            isEditable={true}
           />
         </div>
       ) : (
